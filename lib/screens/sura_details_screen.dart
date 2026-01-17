@@ -6,6 +6,9 @@ import 'package:islami/utils/app_assets.dart';
 import 'package:islami/utils/app_colors.dart';
 import 'package:islami/utils/app_styles.dart';
 import 'package:islami/utils/device_dimensions.dart';
+import 'package:provider/provider.dart';
+
+import '../provider/most_recent_provider.dart';
 
 
 class SuraDetailsScreen extends StatefulWidget {
@@ -19,11 +22,15 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
   List<String> verses =[];
   String  suraContent ='';
   bool isContainer = true;
+  late MostRecentProvider mostRecentProvider;
+
 
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
+    mostRecentProvider = Provider.of<MostRecentProvider>(context);
+
     var args = ModalRoute.of(context)?.settings.arguments as int ;
     if (verses.isEmpty){
       loadSuraFile(args);
@@ -86,6 +93,13 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    mostRecentProvider.getLastSuraList();
   }
 
   void loadSuraFile (int index)async{

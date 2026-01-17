@@ -20,6 +20,9 @@ class AppAssets {
   static const String   rightHadith= 'assets/images/right_hadith.png';
   static const String   mosque = 'assets/images/mosque_hadith.png';
   static const String   hadithImage = 'assets/images/hadith_bg.png';
+  static const String   sebhaHead = 'assets/images/sebhaHead.png';
+  static const String   sebhaBody = 'assets/images/sebhaBody.png';
+
 
 
 
